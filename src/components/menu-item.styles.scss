@@ -1,7 +1,7 @@
 
 .menu-item {
   align-items: center;
-  border: 1px solid black;
+  border-radius: 3px;
   display: flex;
   flex: 1 1 auto;
   height: 240px;
@@ -45,7 +45,6 @@
     background: white;
     background-position: center;
     background-size: cover;
-    border: 1px solid black;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -58,7 +57,7 @@
       color: #4a4a4a;
       font-weight: bold;
       font-size: 22px;
-      margin-bottom: 6px;
+      margin: 0 0;
     }
 
     .subtitle {
