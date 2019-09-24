@@ -1,8 +1,6 @@
 
 .menu-item {
   align-items: center;
-  background-position: center;
-  background-size: cover;
   border: 1px solid black;
   display: flex;
   flex: 1 1 auto;
@@ -10,6 +8,20 @@
   justify-content: center;
   margin: 0 7.5px 15px;
   min-width: 30%;
+  overflow: hidden;
+
+  &:hover {
+    cursor: pointer;
+
+    & .background-image {
+      transform: scale(1.1);
+      transition: transform 3s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+    }
+
+    & .content {
+      opacity: 0.9;
+    }
+  }
 
   &.large {
     height: 380px;
@@ -23,14 +35,24 @@
     margin-left: 7.5px;
   }
 
+  .background-image {
+    height: 100%;
+    width: 100%;
+  }
+
   .content {
     align-items: center;
+    background: white;
+    background-position: center;
+    background-size: cover;
     border: 1px solid black;
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: 90px;
     padding: 0 25px;
+    opacity: 0.7;
+    position: absolute;
 
     .title {
       color: #4a4a4a;
