@@ -1,19 +1,19 @@
-import React from 'react';
-import FormInput from '../form-input/form-input.component';
-import CustomButton from '../custom-button/custom-button.component'
-import { auth, createUserProfileDocument } from '../../firebase/firebase.utils'
-import './sign-up.styles.scss';
+import React from "react";
+import FormInput from "../form-input/form-input.component";
+import CustomButton from "../custom-button/custom-button.component";
+import { auth, createUserProfileDocument } from "../../firebase/firebase.utils";
+import "./sign-up.styles.scss";
 
 class SignUp extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      displayName: '',
-      email: '',
-      password: '',
-      confirmPassword: ''
-    }
+      displayName: "",
+      email: "",
+      password: "",
+      confirmPassword: ""
+    };
   }
 
   handleSubmit = async event => {
@@ -21,16 +21,18 @@ class SignUp extends React.Component {
 
     const { displayName, email, password, confirmPassword } = this.state;
 
-    if(password !== confirmPassword){
+    if (password !== confirmPassword) {
       alert("Passwords don't match");
       return;
     }
 
     try {
-      const { user } = await auth.createUserWithEmailAndPassword(email, password);
+      const { user } = await auth.createUserWithEmailAndPassword(
+        email,
+        password
+      );
 
-      createUserProfileDocument(user, {displayName});
-
+      createUserProfileDocument(user, { displayName });
     } catch (error) {
       console.log(error);
     }
@@ -39,16 +41,14 @@ class SignUp extends React.Component {
   handleChange = event => {
     const { name, value } = event.target;
 
-    this.setState({[name]: value});
-  }
+    this.setState({ [name]: value });
+  };
 
-  render(){
+  render() {
     const { displayName, email, password, confirmPassword } = this.state;
-    return(
+    return (
       <div className="sign-up">
-        <h2 className="title">
-          I do not have an account
-        </h2>
+        <h2 className="title">I do not have an account</h2>
         <span> Sign up with your email and password</span>
         <form className="sign-up-form" onSubmit={this.handleSubmit}>
           <FormInput
@@ -86,8 +86,8 @@ class SignUp extends React.Component {
           <CustomButton type="submit"> SIGN UP</CustomButton>
         </form>
       </div>
-    )
+    );
   }
 }
 
-export default SignUp
+export default SignUp;
